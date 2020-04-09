@@ -18,19 +18,19 @@ int main()
  
 while(vali==0)
 {
-	 printf("请输入您要读取的txt文件的文件名(如: phantom.txt 您不用输入后缀.txt):\n");            //用户输入需求 
+	 printf("请输入您要读取的txt文件的文件名(如: phantom.txt 您不用输入后缀.txt 只输入phantom就好):\n");            //用户输入需求 
  	 gets(txt1);
      strcat(txt1,suffix);
-     printf("将从 %s 文件中读取数据\n\n",txt1);
+     printf("将从 %s 文件中读取数据...\n\n",txt1);
      if((fp = fopen(txt1,"r")) == NULL)
 	 {
  		perror("fail to read");
  		vali = 0;
- 		printf("请您核对文件名后，重新输入\n\n\n");
+ 		printf("请您核对文件名后，重新输入...\n\n\n");
  	}
  	else
  	{
- 		printf("成功找到文件%s\n\n",txt1); 
+ 		printf("成功找到文件%s...\n\n",txt1); 
  		vali=1;	 	
 	 }
 }
@@ -38,12 +38,11 @@ while(vali==0)
 
  printf("请输入您想要提取的语言，输入0为英文，输入1为中文\n");    //用户想要提取的语言 
  gets(language);
- printf("您输入的是%s",language);
+
  
- printf("请输入读取的txt文件的文件名(您可以自己起一个名字，您不用输入后缀.txt):\n"); 
+ printf("\n请输入即将生成的txt文件的文件名(您可以自己起一个名字，您不用输入后缀.txt):\n"); 
  gets(txt2);  //这里要用gets，不能用scanf，因为scanf用空格符标志字符串结束。但我们的文件名是可能出现空格的 
  strcat(txt2,suffix);
- 
 
 
  //读取文件并存储 
@@ -98,9 +97,11 @@ else                            //提取中文
 		fputs(john[j],wp);
 		fputs("\n",wp);
 	}
+printf("请到当前文件夹查找 %s 文件，您的提取结果在这个文件中...\n\n\n",txt2);
 	fclose(wp);	
 
-printf("请到当前文件夹查找 %s 文件，您的提取结果在这个文件中\n\n\n",txt2);
+
+  system("pause"); //防止闪退 
   return 0;
 }
 
